@@ -1,6 +1,6 @@
 ﻿# E-Commerce
 🛒 E-Commerce Web Application
-
+<img width="1917" height="872" alt="Ekran görüntüsü 2025-08-04 061436" src="https://github.com/user-attachments/assets/3c8921c8-c503-4824-8d79-9ad62dcc4fb5" />
 A full-stack e-commerce platform developed using Java Spring Boot for the backend and Angular for the frontend.
 🚀 Features
 
@@ -76,12 +76,13 @@ Frontend (Angular)
     ⚠️ The login page/UI has not been implemented yet. However, the authentication backend integration with Okta is already in place.
 
 
-<img width="1917" height="872" alt="Ekran görüntüsü 2025-08-04 061436" src="https://github.com/user-attachments/assets/3c8921c8-c503-4824-8d79-9ad62dcc4fb5" />
 
 
-    <img width="1916" height="855" alt="Ekran görüntüsü 2025-08-04 061521" src="https://github.com/user-attachments/assets/ae4b737b-4c49-4f17-85aa-04e7a9e4fa8c" />
+
+<img width="1916" height="855" alt="Ekran görüntüsü 2025-08-04 061521" src="https://github.com/user-attachments/assets/ae4b737b-4c49-4f17-85aa-04e7a9e4fa8c" />
 
 
-    <img width="1918" height="872" alt="Ekran görüntüsü 2025-08-04 061551" src="https://github.com/user-attachments/assets/68574d00-0332-4241-af36-ea354f94ed7b" />
+<img width="1918" height="872" alt="Ekran görüntüsü 2025-08-04 061551" src="https://github.com/user-attachments/assets/68574d00-0332-4241-af36-ea354f94ed7b" />
+
 
 
