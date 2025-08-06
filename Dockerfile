@@ -8,13 +8,12 @@ RUN npm ci --only=production
 COPY store-ui/ ./
 RUN npm run build
 
-# Backend build stage
-FROM maven:3.8.6-openjdk-17-slim AS backend-build
+# Backend build stage  
+FROM openjdk:17-jdk-slim AS backend-build
 WORKDIR /app/backend
-COPY store/pom.xml ./
-RUN mvn dependency:go-offline
 COPY store/ ./
-RUN mvn clean package -DskipTests
+RUN chmod +x ./mvnw
+RUN ./mvnw clean package -DskipTests
 
 # Runtime stage
 FROM openjdk:17-jdk-slim
