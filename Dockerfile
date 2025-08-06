@@ -21,8 +21,11 @@ COPY store/src ./src
 # Build the application
 RUN mvn clean package -DskipTests -B
 
+# Find and rename the jar file
+RUN find target -name "*.jar" -exec mv {} app.jar \;
+
 # Expose port
 EXPOSE 8080
 
 # Run the application
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "app.jar"]
