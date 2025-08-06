@@ -3,9 +3,8 @@
 # Frontend build stage
 FROM node:18-alpine AS frontend-build
 WORKDIR /app/frontend
-COPY store-ui/package*.json ./
-RUN npm ci --only=production
 COPY store-ui/ ./
+RUN npm install
 RUN npm run build
 
 # Backend build stage  
