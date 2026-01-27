@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <h2>Giriş Yap</h2>
+    <p class="auth-subtitle">Echo Market hesabınla devam et.</p>
+
+    <form (submit)="submit(); $event.preventDefault()">
+      <label>
+        Email
+        <input type="email" [(ngModel)]="email" name="email" required>
+      </label>
+
+      <label>
+        Şifre
+        <input type="password" [(ngModel)]="password" name="password" required>
+      </label>
+
+      <button type="submit" class="btn btn-primary auth-btn">Giriş Yap</button>
+      <div *ngIf="error" class="auth-error">{{ error }}</div>
+    </form>
+
+    <p class="auth-footer">
+      Hesabın yok mu? <a routerLink="/register">Kayıt Ol</a>
+    </p>
+  </div>
+</div>

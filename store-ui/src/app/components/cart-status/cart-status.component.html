@@ -1,0 +1,7 @@
+<div class="cart-area d-n cart-status">
+    <a routerLink="/cart-details" class="cart-status-link">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-badge">{{ totalQuantity }}</span>
+        <span class="cart-total">{{ totalPrice | currency: 'TL'}}</span>
+    </a>
+</div>

@@ -1,0 +1,74 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+
+      <div *ngIf="cartItems.length > 0" class="cart-card">
+        <table class="table cart-table">
+          <thead>
+            <tr>
+              <th width="%20">Ürün Resmi</th>
+              <th width="%50">Ürün Detayı</th>
+              <th width="%30"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tempCartItem of cartItems">
+              <td class="cart-cell cart-media">
+                <img src="{{ tempCartItem.imageUrl }}" class="cart-img" [alt]="tempCartItem.name" />
+              </td>
+
+              <td class="cart-cell">
+                <p class="cart-name">{{ tempCartItem.name }}</p>
+                <p class="cart-price">{{ tempCartItem.unitPrice | currency: 'TL' }}</p>
+              </td>
+
+              <td class="cart-cell">
+                <div class="items qty-controls">
+                  <label class="qty-label">Miktar</label>
+                  <div class="row no-gutters align-items-center qty-row">
+                    <div class="col">
+                      <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm qty-btn">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+
+                    <div class="col ml-4 mr-2 qty-value">
+                      {{ tempCartItem.quantity }}
+                    </div>
+
+                    <div class="col">
+                      <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm qty-btn">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                    </div>
+
+                    <div class="col-8"></div>
+                  </div>
+                </div>
+
+                <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm mt-2 remove-btn">Kaldır</button>
+                <p class="mt-2 cart-subtotal">
+                  Ara Toplam: {{ tempCartItem.quantity * tempCartItem.unitPrice | currency: 'TL' }}
+                </p>
+              </td>
+            </tr>
+
+            <tr class="cart-summary-row">
+              <td colspan="2"></td>
+              <td class="cart-summary">
+                <p>Toplam Miktar: {{ totalQuantity }}</p>
+                <p>Kargo: Ücretsiz</p>
+                <p>Toplam fiyat: {{ totalPrice | currency: 'TL' }}</p>
+                <a routerLink="/checkout" class="btn btn-primary checkout-btn">Ödeme</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12 cart-empty empty-state" role="alert">
+        Alışveriş sepetiniz boş.
+      </div>
+    </div>
+  </div>
+</div>

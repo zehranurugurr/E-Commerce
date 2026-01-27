@@ -1,0 +1,93 @@
+<div class="admin-page">
+  <div class="admin-hero">
+    <div>
+      <p class="admin-eyebrow">Admin Panel</p>
+      <h2>Ürün Yönetimi</h2>
+      <p class="admin-subtitle">Ürünleri ekle, güncelle ve stokları kontrol et.</p>
+    </div>
+    <div class="admin-actions">
+      <button class="btn btn-primary admin-btn" (click)="resetForm()">Yeni Ürün</button>
+      <button class="btn btn-outline-primary admin-btn ghost" disabled>Toplu Güncelle</button>
+    </div>
+  </div>
+
+  <div *ngIf="notice" class="notice" [class.success]="noticeType === 'success'" [class.error]="noticeType === 'error'">
+    {{ notice }}
+  </div>
+
+  <div class="admin-grid">
+    <div class="admin-card form-card">
+      <h3>Ürün Bilgileri</h3>
+      <p class="muted">Formu doldurup kaydet.</p>
+
+      <div class="form-grid">
+        <label>
+          Ürün Adı
+          <input type="text" placeholder="Örn: Pro Laptop 14" [(ngModel)]="form.name" name="name" required>
+        </label>
+
+        <label>
+          Fiyat (₺)
+          <input type="number" placeholder="19999" [(ngModel)]="form.unitPrice" name="unitPrice" min="0" required>
+        </label>
+
+        <label>
+          Stok
+          <input type="number" placeholder="50" [(ngModel)]="form.unitsInStock" name="unitsInStock" min="0" required>
+        </label>
+
+        <label>
+          Kategori
+          <select [(ngModel)]="form.categoryId" name="categoryId" required>
+            <option [ngValue]="null">Kategori seç</option>
+            <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.categoryName }}</option>
+          </select>
+        </label>
+
+        <label class="full">
+          Görsel URL
+          <input type="text" placeholder="assets/images/products/..." [(ngModel)]="form.imageUrl" name="imageUrl">
+        </label>
+
+        <label class="full">
+          Açıklama
+          <textarea rows="4" placeholder="Kısa ürün açıklaması..." [(ngModel)]="form.description" name="description"></textarea>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary admin-btn" (click)="save()" [disabled]="!isFormValid">Kaydet</button>
+        <button class="btn btn-light admin-btn" (click)="resetForm()">Temizle</button>
+      </div>
+    </div>
+
+    <div class="admin-card list-card">
+      <div class="list-head">
+        <h3>Mevcut Ürünler</h3>
+        <input class="search" type="text" placeholder="Ürün ara..." [(ngModel)]="searchTerm" name="searchTerm">
+      </div>
+
+      <div class="product-list">
+        <div class="product-row" *ngFor="let product of filteredProducts">
+          <div class="thumb" [style.backgroundImage]="product.imageUrl ? 'url(' + product.imageUrl + ')' : 'none'"></div>
+          <div class="info">
+            <strong>{{ product.name }}</strong>
+            <span>{{ product.unitsInStock }} stok</span>
+          </div>
+          <div class="price">₺{{ product.unitPrice }}</div>
+          <div class="stock-editor">
+            <input type="number" min="0" [(ngModel)]="product.unitsInStock" aria-label="Stok adedi">
+            <button class="btn btn-outline-primary btn-sm" (click)="updateStock(product)">Güncelle</button>
+          </div>
+          <div class="row-actions">
+            <button class="btn btn-outline-primary btn-sm" (click)="edit(product)">Düzenle</button>
+            <button class="btn btn-danger btn-sm" (click)="remove(product)">Sil</button>
+          </div>
+        </div>
+        <div *ngIf="filteredProducts.length === 0" class="empty-state">
+          Ürün bulunamadı.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

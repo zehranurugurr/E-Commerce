@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <h2>Kayıt Ol</h2>
+    <p class="auth-subtitle">Hızlıca Echo Market hesabı oluştur.</p>
+
+    <form (submit)="submit(); $event.preventDefault()">
+      <label>
+        Email
+        <input type="email" [(ngModel)]="email" name="email" required>
+      </label>
+
+      <label>
+        Şifre
+        <input type="password" [(ngModel)]="password" name="password" required>
+      </label>
+
+      <button type="submit" class="btn btn-primary auth-btn">Kayıt Ol</button>
+      <div *ngIf="error" class="auth-error">{{ error }}</div>
+    </form>
+
+    <p class="auth-footer">
+      Zaten hesabın var mı? <a routerLink="/login">Giriş Yap</a>
+    </p>
+  </div>
+</div>

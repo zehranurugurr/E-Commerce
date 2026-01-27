@@ -1,0 +1,47 @@
+:host {
+  --brand-primary: #205b8d;
+  --brand-accent: #0da8e4;
+  --brand-ink: #0f172a;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: min(640px, 100%);
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid rgba(32, 91, 141, 0.25);
+  padding: 8px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-field:focus-within {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(13, 168, 228, 0.2);
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-muted);
+  display: inline-flex;
+}
+
+.search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 2px 0;
+}

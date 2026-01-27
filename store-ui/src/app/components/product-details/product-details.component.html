@@ -1,0 +1,54 @@
+<div class="detail-section">
+  <div class="container-fluid">
+    <div class="detail-card">
+      <div class="detail-media">
+        <img src="{{ product.imageUrl }}" class="detail-img" [alt]="product.name">
+      </div>
+
+      <div class="detail-body">
+        <h3 class="detail-title">{{ product.name }}</h3>
+
+        <div class="detail-cta">
+          <div class="price-tag">{{ product.unitPrice | currency:'TL' }}</div>
+          <button (click)="addToCart()" class="btn btn-primary btn-sm add-to-cart" [disabled]="(product.unitsInStock || 0) === 0">
+            {{ (product.unitsInStock || 0) === 0 ? 'Stokta Yok' : 'Sepete Ekle' }}
+          </button>
+        </div>
+
+        <div class="detail-divider"></div>
+
+        <div class="detail-stock" [class.out]="(product.unitsInStock || 0) === 0">
+          {{ (product.unitsInStock || 0) > 0 ? (product.unitsInStock + ' adet stokta') : 'Stokta ürün yok' }}
+        </div>
+
+        <h4 class="detail-subtitle">Açıklama</h4>
+        <p class="detail-text">{{ product.description }}</p>
+
+        <a routerLink="/products" class="detail-back">Ürün Listesine Geri Dön</a>
+      </div>
+    </div>
+
+    <div class="similar-section" *ngIf="similarProducts?.length">
+      <div class="similar-header">
+        <h4 class="similar-title">Benzer Ürünler</h4>
+        <a routerLink="/products" class="similar-link">Tümünü Gör</a>
+      </div>
+
+      <div class="similar-track">
+        <a
+          *ngFor="let item of similarProducts"
+          [routerLink]="['/products', item.id]"
+          class="similar-card"
+        >
+          <div class="similar-media">
+            <img [src]="item.imageUrl" [alt]="item.name">
+          </div>
+          <div class="similar-info">
+            <div class="similar-name" [title]="item.name">{{ item.name }}</div>
+            <div class="similar-price">{{ item.unitPrice | currency:'TL' }}</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

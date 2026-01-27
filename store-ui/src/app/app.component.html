@@ -1,0 +1,108 @@
+<input id="sidebar-toggle" class="sidebar-toggle" type="checkbox" />
+
+<div class="page-wrapper app-shell">
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar sidebar">
+    <div class="logo brand">
+      <a routerLink="/home" class="brand-link">
+        <span class="brand-mark">E</span><br>
+      </a>
+      <span class="brand-tagline">Modern alışveriş deneyimi</span>
+      <label class="sidebar-close" for="sidebar-toggle" aria-label="Menüyü Kapat">×</label>
+    </div>
+
+    <div class="sidebar-heading">
+      <span>Kategoriler</span>
+      <span class="sidebar-pill">Keşfet</span>
+    </div>
+
+    <!-- Kategori Menüsü -->
+    <app-product-category-menu></app-product-category-menu>
+  </aside>
+  <!-- END MENU SIDEBAR-->
+
+  <div class="page-container app-main">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop header-modern">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap header-stack">
+            <div class="header-left">
+              <label class="burger" for="sidebar-toggle" aria-label="Menüyü Aç/Kapat">
+                <span></span>
+                <span></span>
+              </label>
+              <div class="header-title">
+                <h2>Echo Market</h2>
+              </div>
+            </div>
+
+            <div class="header-search">
+              <app-search></app-search>
+            </div>
+
+            <div class="header-actions">
+              <a routerLink="/home" class="btn btn-outline-primary nav-home">Ana Sayfa</a>
+              <app-cart-status></app-cart-status>
+
+              <ng-container *ngIf="!authService.isLoggedIn(); else loggedInMenu">
+                <div class="auth-actions">
+                  <a routerLink="/login" class="btn btn-outline-primary auth-btn">Giriş Yap</a>
+                  <a routerLink="/register" class="btn btn-primary auth-btn primary">Üye Ol</a>
+                </div>
+              </ng-container>
+
+              <ng-template #loggedInMenu>
+                <div
+                  class="profile-menu"
+                  [class.open]="profileOpen"
+                  (keydown.escape)="closeProfile()"
+                >
+                  <button
+                    class="profile-btn"
+                    type="button"
+                    (click)="toggleProfile()"
+                    [attr.aria-expanded]="profileOpen"
+                    aria-haspopup="true"
+                    aria-controls="profile-menu"
+                  >
+                    <span class="avatar">{{ avatarInitials }}</span>
+                    <span class="profile-text">
+                      <span class="profile-name">{{ displayName }}</span>
+                      <span class="profile-role" *ngIf="roleLabel">{{ roleLabel }}</span>
+                    </span>
+                    <span class="chev" aria-hidden="true">▾</span>
+                  </button>
+
+                  <div class="profile-dropdown" id="profile-menu" role="menu">
+                    <div class="profile-section">
+                      <span class="section-label">Hesap</span>
+                      <a routerLink="/account" role="menuitem" (click)="closeProfile()">Hesabım</a>
+                      <a routerLink="/cart-details" role="menuitem" (click)="closeProfile()">Sepetim</a>
+                      <a routerLink="/checkout" role="menuitem" (click)="closeProfile()">Ödeme</a>
+                    </div>
+
+                    <div class="profile-section" *ngIf="isAdmin">
+                      <span class="section-label">Yönetim</span>
+                      <a routerLink="/admin/products" role="menuitem" (click)="closeProfile()">Ürün Yönetimi</a>
+                    </div>
+
+                    <button class="logout-btn" type="button" (click)="logout(); closeProfile()">
+                      Çıkış Yap
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer></footer>

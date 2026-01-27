@@ -1,0 +1,26 @@
+:host {
+  --brand-primary: #205b8d;
+  --brand-ink: #0f172a;
+  --brand-muted: #64748b;
+}
+
+.account-page {
+  padding: 28px 0;
+}
+
+.account-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid rgba(32, 91, 141, 0.12);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
+.account-card h2 {
+  margin-bottom: 6px;
+  color: var(--brand-ink);
+}
+
+.account-card p {
+  color: var(--brand-muted);
+}
