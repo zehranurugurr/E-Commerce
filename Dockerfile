@@ -28,5 +28,6 @@ COPY --from=frontend-build /app/build ./static
 # Expose port
 EXPOSE 8080
 
-# Run the application
-CMD ["java", "-jar", "app.jar"]
+# Run the application (Render PORT kullanır)
+CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080} --spring.web.resources.static-locations=file:/app/static/"]
+
