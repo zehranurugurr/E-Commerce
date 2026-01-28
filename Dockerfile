@@ -1,6 +1,6 @@
 # Multi-stage build for fullstack E-Commerce
 
-# Frontend build stage
+# 1) Frontend build stage
 FROM node:18-alpine AS frontend-build
 WORKDIR /app
 COPY store-ui/package*.json ./
@@ -8,26 +8,25 @@ RUN npm install
 COPY store-ui/ ./
 RUN npm run build
 
-# Backend build stage
-FROM openjdk:17-jdk-slim AS backend-build
+# 2) Backend build stage (Maven + JDK 17)
+FROM maven:3.9-eclipse-temurin-17 AS backend-build
 WORKDIR /app
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 COPY store/ ./
 RUN mvn clean package -DskipTests
 
-# Final runtime stage
-FROM openjdk:17-jdk-slim
+# 3) Final runtime stage (JRE 17)
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copy built backend jar
+# Backend jar
 COPY --from=backend-build /app/target/*.jar app.jar
 
-# Copy built frontend to serve as static files
 COPY --from=frontend-build /app/build ./static
+COPY --from=frontend-build /app/dist ./static
 
-# Expose port
 EXPOSE 8080
 
-# Run the application (Render PORT kullanır)
+# Render PORT + Spring static
 CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080} --spring.web.resources.static-locations=file:/app/static/"]
+
 
