@@ -39,11 +39,15 @@ public class SecurityConfig {
 
                 .requestMatchers(
                     "/", "/index.html",
+                    "/error",
+                    "/favicon.ico",
                     "/static/**",
                     "/assets/**",
-                    "/favicon.ico",
-                    "/*.js", "/*.css", "/*.map"
-                ).permitAll()
+                    "/webjars/**",
+                    "/*.js","/*.css","/*.map",
+                    "/**/*.js","/**/*.css","/**/*.map",
+                    "/**/*.png","/**/*.jpg","/**/*.jpeg","/**/*.svg","/**/*.ico"
+                    ).permitAll()
 
                 .requestMatchers("/api/auth/**").permitAll()
 
