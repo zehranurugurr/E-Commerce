@@ -55,9 +55,16 @@ public class SecurityConfig {
                 // Auth
                 .requestMatchers("/api/auth/**").permitAll()
 
-                // Public APIs
-                .requestMatchers(HttpMethod.GET, "/api/products/**", "/api/product-category/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/countries/**", "/api/states/**").permitAll()
+               // Public APIs (Spring Data REST root + metadata)
+                .requestMatchers(HttpMethod.GET,
+                    "/api", "/api/",
+                     "/api/profile/**",
+                     "/api/**/profile/**"
+                ).permitAll()
+
+// Public APIs (resources)
+.requestMatchers(HttpMethod.GET, "/api/products/**", "/api/product-category/**").permitAll()
+.requestMatchers(HttpMethod.GET, "/api/countries/**", "/api/states/**").permitAll()
 
                 // Protected APIs
                 .requestMatchers("/api/checkout/**").hasRole("USER")
