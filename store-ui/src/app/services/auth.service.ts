@@ -12,19 +12,20 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = '/api/auth';
+
+  private readonly baseUrl = '/api/auth';
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.authUrl}/login`, { email, password })
-      .pipe(tap((res) => this.setToken(res.token)));
+    return this.http.post<AuthResponse>(`${this.baseUrl}/login`, { email, password })
+      .pipe(tap(res => this.setToken(res.token)));
   }
 
   register(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.authUrl}/register`, { email, password })
-      .pipe(tap((res) => this.setToken(res.token)));
+    return this.http.post<AuthResponse>(`${this.baseUrl}/register`, { email, password })
+      .pipe(tap(res => this.setToken(res.token)));
   }
 
   logout(): void {
@@ -55,9 +56,8 @@ export class AuthService {
 
   private getPayload(): { [key: string]: any } | null {
     const token = this.getToken();
-    if (!token) {
-      return null;
-    }
+    if (!token) return null;
+
     try {
       const payload = token.split('.')[1];
       const normalized = payload.replace(/-/g, '+').replace(/_/g, '/');
