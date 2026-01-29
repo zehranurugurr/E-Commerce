@@ -5,9 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SpaForwardController {
+    @RequestMapping("/{path:[^\\.]*}")
+    public String forwardRoot() {
+        return "forward:/index.html";
+    }
 
-    @RequestMapping(value = {"/{path:[^\\.]*}", "/**/{path:[^\\.]*}"})
-    public String forward() {
+    @RequestMapping("/**/{path:[^\\.]*}")
+    public String forwardNested() {
         return "forward:/index.html";
     }
 }
