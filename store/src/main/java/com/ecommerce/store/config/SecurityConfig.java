@@ -35,25 +35,31 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
 
+                // Preflight
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
+                // SPA routes + static files
                 .requestMatchers(
                     "/", "/index.html",
+                    "/home", "/products", "/checkout", "/login", "/register",
                     "/error",
                     "/favicon.ico",
                     "/static/**",
                     "/assets/**",
                     "/webjars/**",
-                    "/*.js","/*.css","/*.map",
-                    "/**/*.js","/**/*.css","/**/*.map",
-                    "/**/*.png","/**/*.jpg","/**/*.jpeg","/**/*.svg","/**/*.ico"
-                    ).permitAll()
+                    "/*.js", "/*.css", "/*.map",
+                    "/**/*.js", "/**/*.css", "/**/*.map",
+                    "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.svg", "/**/*.ico"
+                ).permitAll()
 
+                // Auth
                 .requestMatchers("/api/auth/**").permitAll()
 
+                // Public APIs
                 .requestMatchers(HttpMethod.GET, "/api/products/**", "/api/product-category/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/countries/**", "/api/states/**").permitAll()
 
+                // Protected APIs
                 .requestMatchers("/api/checkout/**").hasRole("USER")
                 .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
@@ -80,7 +86,6 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-
         configuration.setAllowedOriginPatterns(List.of("*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
