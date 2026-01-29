@@ -12,7 +12,7 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly authUrl = 'http://localhost:8080/api/auth';
+  private baseUrl = '/api/auth';
   private readonly tokenKey = 'auth_token';
 
   constructor(private http: HttpClient) {}
