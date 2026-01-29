@@ -12,8 +12,9 @@ public class SpaForwardController {
     @RequestMapping(value = {"/{path:[^\\.]*}", "/**/{path:[^\\.]*}"})
     public String forward(HttpServletRequest request) {
         String uri = request.getRequestURI();
-        
-        if (uri.startsWith("/api") || uri.startsWith("/actuator")) {
+
+        // ✅ API isteklerini asla SPA'ya forward etme
+        if (uri.startsWith("/api")) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
