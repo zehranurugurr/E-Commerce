@@ -1,0 +1,12 @@
+.git
+.idea
+.vscode
+
+store/target
+store/.idea
+store/hs_err_pid*.log
+
+store-ui/node_modules
+store-ui/dist
+
+README.md

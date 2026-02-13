@@ -11,7 +11,6 @@ export class ProductService {
 
   private baseUrl = '/api/products';
   private categoryUrl = '/api/product-category';
-
   
   constructor(private httpClient: HttpClient) { }
 

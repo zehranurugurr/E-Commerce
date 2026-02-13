@@ -36,6 +36,3 @@ EXPOSE 8080
 
 
 CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT:-8080} --spring.web.resources.static-locations=file:/app/static/"]
-
-
-

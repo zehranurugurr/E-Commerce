@@ -12,7 +12,6 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-
   private readonly baseUrl = '/api/auth';
   private readonly tokenKey = 'auth_token';
 
@@ -57,7 +56,6 @@ export class AuthService {
   private getPayload(): { [key: string]: any } | null {
     const token = this.getToken();
     if (!token) return null;
-
     try {
       const payload = token.split('.')[1];
       const normalized = payload.replace(/-/g, '+').replace(/_/g, '/');
