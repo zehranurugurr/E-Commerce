@@ -47,8 +47,7 @@ public class SecurityConfig {
                     "/assets/**",
                     "/webjars/**",
                     "/*.js", "/*.css", "/*.map",
-                    "/**/*.js", "/**/*.css", "/**/*.map",
-                    "/**/*.png", "/**/*.jpg", "/**/*.jpeg", "/**/*.svg", "/**/*.ico"
+                    "/*.png", "/*.jpg", "/*.jpeg", "/*.svg", "/*.ico"
                 ).permitAll()
 
                 // Auth
@@ -57,8 +56,7 @@ public class SecurityConfig {
                // Public APIs (Spring Data REST root + metadata)
                 .requestMatchers(HttpMethod.GET,
                     "/api", "/api/",
-                     "/api/profile/**",
-                     "/api/**/profile/**"
+                     "/api/profile/**"
                 ).permitAll()
 
 // Public APIs (resources)
