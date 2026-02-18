@@ -387,6 +387,12 @@
     width: 100%;
   }
 
+  .header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -403,9 +409,40 @@
 }
 
 @media (max-width: 575.98px) {
+  .header-title h2 {
+    font-size: 1rem;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-search {
+    order: 2;
+  }
+
+  .header-actions {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .nav-home {
+    padding: 6px 10px;
+    font-size: 0.82rem;
+  }
+
   .auth-actions {
     width: 100%;
     justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .auth-btn {
+    padding: 7px 12px;
+    font-size: 0.82rem;
   }
 
   .profile-dropdown {

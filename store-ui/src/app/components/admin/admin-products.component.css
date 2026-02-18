@@ -235,4 +235,27 @@ button:disabled {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .product-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .stock-editor,
+  .row-actions,
+  .price {
+    grid-column: 2;
+  }
+
+  .stock-editor {
+    flex-wrap: wrap;
+  }
 }
