@@ -1,9 +1,9 @@
 INSERT INTO product_category (id, category_name) VALUES
     (1, 'Bilgisayar'),
     (2, 'Cep Telefonu'),
-    (3, 'Kulaklik'),
+    (3, 'Kulaklık'),
     (4, 'Televizyon'),
-    (5, 'Akilli Saat')
+    (5, 'Akıllı Saat')
 ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product (id, category_id, sku, name, description, unit_price, image_url, active, units_in_stock, date_created, last_updated) VALUES
