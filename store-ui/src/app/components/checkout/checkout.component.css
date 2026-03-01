@@ -191,7 +191,7 @@
 }
 
 /* Sipariş özeti alanını öne çıkar */
-.form-area:last-of-type{
+.order-summary{
   border-color: rgba(13,168,228,.22);
 }
 
@@ -202,7 +202,7 @@
 }
 
 /* Sticky checkout action bar (HTML değiştirmeden submit alanını sticky yapar) */
-.text-center{
+.checkout-actions{
   position: sticky;
   bottom: 12px;
   z-index: 50;
@@ -235,12 +235,32 @@
     margin-bottom: 6px;
   }
 
-  .text-center{
+  .checkout-actions{
     bottom: 8px;
   }
 
   .checkout-submit{
     width: 100%;
     min-width: 0;
+  }
+}
+
+@media (max-width: 575.98px){
+  .checkout-form {
+    gap: 14px;
+  }
+
+  .form-area {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .form-title {
+    font-size: 1rem;
+  }
+
+  .checkout-actions {
+    padding: 10px;
+    border-radius: 14px;
   }
 }

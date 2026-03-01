@@ -259,3 +259,27 @@ button:disabled {
     flex-wrap: wrap;
   }
 }
+
+@media (max-width: 575.98px) {
+  .admin-page {
+    padding: 16px 0 28px;
+    gap: 16px;
+  }
+
+  .admin-hero,
+  .admin-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .form-actions,
+  .row-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn,
+  .row-actions .btn,
+  .search {
+    width: 100%;
+  }
+}

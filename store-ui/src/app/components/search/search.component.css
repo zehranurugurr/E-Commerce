@@ -45,3 +45,13 @@
   width: 100%;
   padding: 2px 0;
 }
+
+@media (max-width: 575.98px) {
+  .search-form {
+    width: 100%;
+  }
+
+  .search-field {
+    padding: 10px 12px;
+  }
+}

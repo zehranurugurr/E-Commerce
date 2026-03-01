@@ -1013,10 +1013,19 @@ body {
     overflow-x: hidden;
 }
 
+body {
+    min-width: 320px;
+}
+
 .container-fluid,
 .section-content,
 .main-content {
     max-width: 100%;
+}
+
+.section-content-p30,
+.section-content-p35 {
+    width: 100%;
 }
 
 .table-responsive,
@@ -1029,6 +1038,7 @@ body {
 @media (max-width: 991px) {
     .page-container {
         top: 0;
+        padding-left: 0;
     }
 
     .main-content {
@@ -1069,5 +1079,10 @@ body {
     .header-actions {
         width: 100%;
         justify-content: space-between;
+    }
+
+    .main-content {
+        padding-top: 12px;
+        padding-bottom: 28px;
     }
 }

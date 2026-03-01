@@ -13,16 +13,16 @@
           </thead>
           <tbody>
             <tr *ngFor="let tempCartItem of cartItems">
-              <td class="cart-cell cart-media">
+              <td class="cart-cell cart-media" data-label="Ürün Resmi">
                 <img src="{{ tempCartItem.imageUrl }}" class="cart-img" [alt]="tempCartItem.name" />
               </td>
 
-              <td class="cart-cell">
+              <td class="cart-cell" data-label="Ürün Detayı">
                 <p class="cart-name">{{ tempCartItem.name }}</p>
                 <p class="cart-price">{{ tempCartItem.unitPrice | currency: 'TL' }}</p>
               </td>
 
-              <td class="cart-cell">
+              <td class="cart-cell" data-label="İşlemler">
                 <div class="items qty-controls">
                   <label class="qty-label">Miktar</label>
                   <div class="row no-gutters align-items-center qty-row">
@@ -55,7 +55,7 @@
 
             <tr class="cart-summary-row">
               <td colspan="2"></td>
-              <td class="cart-summary">
+              <td class="cart-summary" data-label="Sipariş Özeti">
                 <p>Toplam Miktar: {{ totalQuantity }}</p>
                 <p>Kargo: Ücretsiz</p>
                 <p>Toplam fiyat: {{ totalPrice | currency: 'TL' }}</p>

@@ -259,9 +259,20 @@
 }
 
 @media (max-width: 575.98px) {
+  .detail-card {
+    padding: 18px;
+    gap: 18px;
+  }
+
   .detail-media {
     min-height: 260px;
     padding: 16px;
+  }
+
+  .detail-img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain;
   }
 
   .detail-cta {
@@ -273,5 +284,9 @@
   .detail-back {
     width: 100%;
     text-align: center;
+  }
+
+  .similar-track {
+    grid-auto-columns: minmax(150px, 82vw);
   }
 }
