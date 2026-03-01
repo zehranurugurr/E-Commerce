@@ -9,20 +9,20 @@
           <span class="brand-mark">E</span>
           <span class="brand-copy">
             <span class="brand-eyebrow">Echo Market</span>
-            <span class="brand-tagline">Modern alisveris deneyimi</span>
+            <span class="brand-tagline">Modern alışveriş deneyimi</span>
           </span>
         </a>
         <div class="brand-pulse" aria-hidden="true"></div>
       </div>
-      <label class="sidebar-close" for="sidebar-toggle" aria-label="Menuyu Kapat">x</label>
+      <label class="sidebar-close" for="sidebar-toggle" aria-label="Menüyü Kapat">×</label>
     </div>
 
     <div class="sidebar-heading">
       <div class="sidebar-heading-copy">
         <span>Kategoriler</span>
-        <small>Trend teknoloji seckisi</small>
+        <small>Trend teknoloji seçkisi</small>
       </div>
-      <span class="sidebar-pill">Kesfet</span>
+      <span class="sidebar-pill">Keşfet</span>
     </div>
 
     <app-product-category-menu></app-product-category-menu>
@@ -34,7 +34,7 @@
         <div class="container-fluid">
           <div class="header-wrap header-stack">
             <div class="header-left">
-              <label class="burger" for="sidebar-toggle" aria-label="Menuyu Ac/Kapat">
+              <label class="burger" for="sidebar-toggle" aria-label="Menüyü Aç/Kapat">
                 <span></span>
                 <span></span>
               </label>
@@ -53,8 +53,8 @@
 
               <ng-container *ngIf="!authService.isLoggedIn(); else loggedInMenu">
                 <div class="auth-actions">
-                  <a routerLink="/login" class="btn btn-outline-primary auth-btn">Giris Yap</a>
-                  <a routerLink="/register" class="btn btn-primary auth-btn primary">Uye Ol</a>
+                  <a routerLink="/login" class="btn btn-outline-primary auth-btn">Giriş Yap</a>
+                  <a routerLink="/register" class="btn btn-primary auth-btn primary">Üye Ol</a>
                 </div>
               </ng-container>
 
@@ -77,24 +77,24 @@
                       <span class="profile-name">{{ displayName }}</span>
                       <span class="profile-role" *ngIf="roleLabel">{{ roleLabel }}</span>
                     </span>
-                    <span class="chev" aria-hidden="true">v</span>
+                    <span class="chev" aria-hidden="true">▾</span>
                   </button>
 
                   <div class="profile-dropdown" id="profile-menu" role="menu">
                     <div class="profile-section">
                       <span class="section-label">Hesap</span>
-                      <a routerLink="/account" role="menuitem" (click)="closeProfile()">Hesabim</a>
+                      <a routerLink="/account" role="menuitem" (click)="closeProfile()">Hesabım</a>
                       <a routerLink="/cart-details" role="menuitem" (click)="closeProfile()">Sepetim</a>
-                      <a routerLink="/checkout" role="menuitem" (click)="closeProfile()">Odeme</a>
+                      <a routerLink="/checkout" role="menuitem" (click)="closeProfile()">Ödeme</a>
                     </div>
 
                     <div class="profile-section" *ngIf="isAdmin">
-                      <span class="section-label">Yonetim</span>
-                      <a routerLink="/admin/products" role="menuitem" (click)="closeProfile()">Urun Yonetimi</a>
+                      <span class="section-label">Yönetim</span>
+                      <a routerLink="/admin/products" role="menuitem" (click)="closeProfile()">Ürün Yönetimi</a>
                     </div>
 
                     <button class="logout-btn" type="button" (click)="logout(); closeProfile()">
-                      Cikis Yap
+                      Çıkış Yap
                     </button>
                   </div>
                 </div>

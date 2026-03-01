@@ -6,9 +6,12 @@
         <path d="M20 20l-4.2-4.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
       </svg>
     </span>
-    <input #myInput type="text"
-            class="au-input au-input-xl search-input"
-            placeholder="Aramak istediğiniz ürünü giriniz..."
-            (keyup.enter)="doSearch(myInput.value)" />
+    <input
+      #myInput
+      type="text"
+      class="au-input au-input-xl search-input"
+      placeholder="Aramak istediğiniz ürünü giriniz..."
+      (keyup.enter)="doSearch(myInput.value)"
+    />
   </div>
 </form>
