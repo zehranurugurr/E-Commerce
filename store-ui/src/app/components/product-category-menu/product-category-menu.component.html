@@ -1,5 +1,5 @@
 <div class="menu-sidebar-content js-scrollbar1 category-menu">
-  <nav class="navbar-sidebar category-nav" aria-label="Kategori Menüsü">
+  <nav class="navbar-sidebar category-nav" aria-label="Kategori Menusu">
     <ul class="list-unstyled navbar-list category-list">
       <li *ngFor="let tempProductCategory of productCategories">
         <a
@@ -8,7 +8,11 @@
           class="category-link"
         >
           <span class="cat-icon" aria-hidden="true"></span>
-          <span>{{ tempProductCategory.categoryName }}</span>
+          <span class="category-copy">
+            <span class="category-name">{{ tempProductCategory.categoryName }}</span>
+            <span class="category-meta">Yeni sezon teknoloji</span>
+          </span>
+          <span class="category-arrow" aria-hidden="true"></span>
         </a>
       </li>
     </ul>
