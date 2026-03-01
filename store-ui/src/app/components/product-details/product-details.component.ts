@@ -41,10 +41,11 @@ export class ProductDetailsComponent {
   }
 
   private loadSimilarProducts(): void {
-    this.productService.getAllProducts().subscribe(data => {
+    this.productService.getAllProductsPaginate(0, 50).subscribe(data => {
+      const allProducts = data._embedded?.products ?? [];
       const currentId = String(this.product.id ?? '');
-      this.similarProducts = data
-        .filter(item => String(item.id ?? '') !== currentId)
+      this.similarProducts = allProducts
+        .filter((item: Product) => String(item.id ?? '') !== currentId)
         .slice(0, 8);
     });
   }
