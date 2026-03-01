@@ -38,9 +38,16 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                 // SPA routes + static files
-                .requestMatchers(
+                .requestMatchers(HttpMethod.GET,
                     "/", "/index.html",
-                    "/home", "/products", "/checkout", "/login", "/register",
+                    "/home",
+                    "/products", "/products/**",
+                    "/category/**",
+                    "/checkout",
+                    "/cart-details",
+                    "/account",
+                    "/login", "/register",
+                    "/admin", "/admin/**",
                     "/error",
                     "/favicon.ico",
                     "/static/**",
