@@ -7,108 +7,100 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from '../../common/cart-item';
 import { CartService } from '../../services/cart.service';
 
-
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterModule, CommonModule,NgbModule],
+  imports: [RouterModule, CommonModule, NgbModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent implements OnInit{
-
+export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  currentCategoryId: number = 1; //ilk gösterilecek kategori
-  searchMode: boolean = false;
+  currentCategoryId = 1;
+  searchMode = false;
 
-  previousCategoryId: number = 1;
-  thePageNumber: number = 1;
-  thePageSize: number = 5;
-  theTotalElements: number = 0;
-  previousKeyword: string = "";
+  previousCategoryId = 1;
+  thePageNumber = 1;
+  thePageSize = 50;
+  theTotalElements = 0;
+  previousKeyword = '';
 
-  constructor(private productService: ProductService, 
-            private cartService: CartService,
-    private route: ActivatedRoute){ //aktif olan route hakkında bilgi almak
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
-  }
-
-  ngOnInit() { //Angular bileşen yüklendiğinde otomatik olarak çalışan yaşam döngüsü (lifecycle) metodu
+  ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
   }
 
-  listProducts() {
-
+  listProducts(): void {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
-    if(this.searchMode){
+    if (this.searchMode) {
       this.handleSearchProducts();
-    }else {
+    } else {
       this.handleListProducts();
     }
   }
 
-  handleSearchProducts(){
+  handleSearchProducts(): void {
+    const theKeyword = this.route.snapshot.paramMap.get('keyword') ?? '';
 
-    const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
-
-    if(this.previousKeyword != theKeyword){
+    if (this.previousKeyword !== theKeyword) {
       this.thePageNumber = 1;
     }
 
     this.previousKeyword = theKeyword;
 
-    this.productService.searchProductsPaginate(this.thePageNumber - 1, this.thePageSize, theKeyword
-    ).subscribe(
-      this.processResult()
-    )
+    this.productService
+      .searchProductsPaginate(this.thePageNumber - 1, this.thePageSize, theKeyword)
+      .subscribe(this.processResult());
   }
 
-  handleListProducts(){
+  handleListProducts(): void {
+    const hasCategoryId = this.route.snapshot.paramMap.has('id');
 
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    if (hasCategoryId) {
+      this.currentCategoryId = +(this.route.snapshot.paramMap.get('id') ?? '1');
 
-    if(hasCategoryId){
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-    }else {
-      this.currentCategoryId = 1;
+      if (this.previousCategoryId !== this.currentCategoryId) {
+        this.thePageNumber = 1;
+      }
+
+      this.previousCategoryId = this.currentCategoryId;
+
+      this.productService
+        .getProductListPaginate(this.thePageNumber - 1, this.thePageSize, this.currentCategoryId)
+        .subscribe(this.processResult());
+      return;
     }
 
-    if(this.previousCategoryId != this.currentCategoryId){
-
-      this.thePageNumber = 1;
-    }
-
-    this.previousCategoryId = this.currentCategoryId;
-
-    this.productService.getProductListPaginate(this.thePageNumber -1, this.thePageSize,
-                                      this.currentCategoryId).subscribe(
-                                        this.processResult()
-    )
+    this.productService
+      .getAllProductsPaginate(this.thePageNumber - 1, this.thePageSize)
+      .subscribe(this.processResult());
   }
 
-  updatePageSize(pageSize: string){
+  updatePageSize(pageSize: string): void {
     this.thePageSize = +pageSize;
-    this.thePageNumber =1;
+    this.thePageNumber = 1;
     this.listProducts();
   }
 
-  processResult() {  //Bu metod, gelen veriyi işleyerek bileşenin durumunu günceller
+  processResult() {
     return (data: any) => {
-       console.log('Gelen veri:', data); 
       this.products = data._embedded.products;
-      this.thePageNumber = data.page.number + 1; //Spring Data REST sayfa numaralandırmasını 0 tabanlı (zero-based) yapar.
+      this.thePageNumber = data.page.number + 1;
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
     };
   }
 
-  addToCart(theProduct: Product){
-
+  addToCart(theProduct: Product): void {
     const theCartItem = new CartItem(theProduct);
-
     this.cartService.addToCart(theCartItem);
   }
 }

@@ -8,15 +8,12 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-
   private baseUrl = '/api/products';
   private categoryUrl = '/api/product-category';
-  
-  constructor(private httpClient: HttpClient) { }
 
-  //Product list componentte çağırıyoruz
+  constructor(private httpClient: HttpClient) {}
+
   getProductList(theCategoryId: number): Observable<Product[]> {
-
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
     return this.getProducts(searchUrl);
@@ -24,21 +21,26 @@ export class ProductService {
 
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponse>(searchUrl).pipe(
-      map(response => response._embedded.products)
+      map((response) => response._embedded.products)
     );
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
-      map(response => response._embedded.productCategory)
+      map((response) => response._embedded.productCategory)
     );
   }
 
   getAllProducts(): Observable<Product[]> {
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-      map(response => response._embedded.products)
+      map((response) => response._embedded.products)
     );
+  }
+
+  getAllProductsPaginate(thePage: number, thePageSize: number): Observable<GetResponse> {
+    const searchUrl = `${this.baseUrl}?page=${thePage}&size=${thePageSize}`;
+
+    return this.httpClient.get<GetResponse>(searchUrl);
   }
 
   createProduct(product: any): Observable<Product> {
@@ -58,7 +60,6 @@ export class ProductService {
   }
 
   searchProducts(theKeyword: string): Observable<Product[]> {
-
     const keyword = encodeURIComponent(theKeyword.trim());
     const searchUrl = `${this.baseUrl}/search/findByNameContainingIgnoreCase?name=${keyword}`;
 
@@ -66,51 +67,49 @@ export class ProductService {
   }
 
   getProduct(theProductId: number): Observable<Product> {
-    
     const productUrl = `${this.baseUrl}/${theProductId}`;
 
     return this.httpClient.get<Product>(productUrl);
   }
 
-
-  //page ve size parametreleri ile sayfalama sağlanıyor, yani veriler küçük parçalara bölünüyor.
-  getProductListPaginate(thePage: number, thePageSize: number, 
-                          theCategoryId: number): Observable<GetResponse> {
-    
+  getProductListPaginate(
+    thePage: number,
+    thePageSize: number,
+    theCategoryId: number
+  ): Observable<GetResponse> {
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}&page=${thePage}&size=${thePageSize}`;
 
     return this.httpClient.get<GetResponse>(searchUrl);
   }
 
-  searchProductsPaginate(thePage: number, 
-    thePageSize: number, 
-    theKeyword: string): Observable<GetResponse> {
-
-      //bir REST API endpoint’ine yapılacak GET isteğinin URL’i
+  searchProductsPaginate(
+    thePage: number,
+    thePageSize: number,
+    theKeyword: string
+  ): Observable<GetResponse> {
     const keyword = encodeURIComponent(theKeyword.trim());
-    const searchUrl = `${this.baseUrl}/search/findByNameContainingIgnoreCase?name=${keyword}`
-      + `&page=${thePage}&size=${thePageSize}`;
+    const searchUrl =
+      `${this.baseUrl}/search/findByNameContainingIgnoreCase?name=${keyword}` +
+      `&page=${thePage}&size=${thePageSize}`;
 
-      return this.httpClient.get<GetResponse>(searchUrl);
+    return this.httpClient.get<GetResponse>(searchUrl);
   }
-
 }
 
 interface GetResponse {
   _embedded: {
     products: Product[];
-  },
+  };
   page: {
-    size: number,
-    totalElements: number,
-    totalPages: number,
-    number: number
-  }
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    number: number;
+  };
 }
-
 
 interface GetResponseProductCategory {
   _embedded: {
     productCategory: ProductCategory[];
-  }
+  };
 }
