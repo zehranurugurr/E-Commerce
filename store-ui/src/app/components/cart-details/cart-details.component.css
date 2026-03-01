@@ -261,3 +261,22 @@
     padding: 14px;
   }
 }
+
+@media (max-width: 390px) {
+  .cart-table tbody tr {
+    padding: 12px;
+  }
+
+  .cart-img {
+    width: min(100%, 150px);
+    height: 150px;
+  }
+
+  .qty-controls {
+    padding: 10px;
+  }
+
+  .cart-summary {
+    font-size: 0.95rem;
+  }
+}

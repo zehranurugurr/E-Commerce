@@ -239,6 +239,68 @@
   }
 }
 
+@media (max-width: 430px) {
+  .product-card {
+    border-radius: 18px;
+  }
+
+  .product-card .ratio {
+    height: 184px;
+  }
+
+  .product-title {
+    font-size: 0.95rem;
+  }
+
+  .stock-chip,
+  .price-tag {
+    font-size: 0.78rem;
+  }
+
+  .add-to-cart,
+  .action-group .btn-outline-primary {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
+  .footer-pagination {
+    margin-top: 20px !important;
+  }
+
+  .footer-pagination .col-12 {
+    justify-content: center !important;
+  }
+
+  .footer-pagination .d-flex.align-items-center.gap-2 {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  ngb-pagination {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-card .ratio {
+    height: 170px;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .product-card .badge-pill {
+    top: 10px !important;
+    left: 10px !important;
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+}
+
 /* === EMPTY STATE === */
 .alert {
   margin-top: 40px;
