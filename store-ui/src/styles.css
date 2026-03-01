@@ -1037,17 +1037,20 @@ body {
 
 @media (max-width: 991px) {
     .page-container {
-        top: 0;
-        padding-left: 0;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        padding-left: 0 !important;
+        width: 100%;
     }
 
     .main-content {
-        padding-top: 20px;
-        padding-bottom: 36px;
+        padding-top: 20px !important;
+        padding-bottom: 36px !important;
     }
 
     .header-wrap {
-        height: auto;
+        height: auto !important;
         gap: 10px;
         padding: 8px 10px;
     }
@@ -1065,6 +1068,27 @@ body {
     .section-content-p35 {
         padding-left: 12px;
         padding-right: 12px;
+    }
+
+    .header-desktop {
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: auto !important;
+        min-height: 72px;
+        z-index: 120;
+    }
+
+    .header-desktop .container-fluid,
+    .header-desktop .section-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .menu-sidebar {
+        width: min(280px, calc(100vw - 28px)) !important;
+        max-width: calc(100vw - 28px);
     }
 }
 
@@ -1084,5 +1108,18 @@ body {
     .main-content {
         padding-top: 12px;
         padding-bottom: 28px;
+    }
+
+    .header-desktop {
+        min-height: 68px;
+    }
+
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .page-wrapper {
+        padding-bottom: 24px;
     }
 }

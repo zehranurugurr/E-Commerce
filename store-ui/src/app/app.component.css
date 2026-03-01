@@ -157,14 +157,6 @@
   cursor: pointer;
 }
 
-.brand-text {
-  font-weight: 900;
-  font-size: 1.15rem;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--brand-primary);
-}
-
 .brand-tagline {
   display: inline-block;
   font-size: 0.95rem;
@@ -482,6 +474,7 @@
     height: 100vh;
     z-index: 200;
     transition: left 0.2s ease;
+    overflow-y: auto;
   }
 
   #sidebar-toggle:checked ~ .page-wrapper .sidebar {
@@ -514,8 +507,20 @@
     font-size: 1.05rem;
   }
 
+  .sidebar-heading {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .sidebar-pill {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
   .header-title h2 {
     font-size: 1rem;
+    line-height: 1.2;
+    word-break: break-word;
   }
 
   .header-left {
@@ -567,6 +572,15 @@
   .profile-btn {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .brand-link {
+    align-items: flex-start;
+  }
+
+  .brand-tagline {
+    max-width: none;
+    font-size: 0.88rem;
   }
 }
 
