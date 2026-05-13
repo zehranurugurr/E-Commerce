@@ -406,3 +406,46 @@ footer {
     min-width: calc(100vw - 36px);
   }
 }
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-eyebrow {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.sidebar-heading-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-heading-copy span {
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.sidebar-heading-copy small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
