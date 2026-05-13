@@ -304,3 +304,88 @@ button:disabled {
     width: 100%;
   }
 }
+
+/* Luxury admin */
+:host {
+  --brand-primary: #00D4FF;
+  --brand-accent: #00D4FF;
+  --brand-ink: #F5F7FB;
+  --brand-muted: #9AA4B2;
+  --brand-surface: rgba(26, 26, 46, 0.72);
+  --brand-tint: rgba(0, 212, 255, 0.12);
+}
+
+.admin-hero,
+.admin-card,
+.product-row {
+  border-radius: 2px;
+  background: rgba(26, 26, 46, 0.68);
+  border-color: rgba(0, 212, 255, 0.22);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.admin-hero {
+  background:
+    linear-gradient(135deg, rgba(0, 212, 255, 0.14), rgba(26, 26, 46, 0.68)),
+    linear-gradient(135deg, #0A0A0A, #1A1A2E);
+}
+
+.admin-eyebrow,
+.price {
+  color: var(--brand-accent);
+}
+
+.admin-hero h2,
+.admin-card h3,
+label,
+.info strong {
+  color: var(--brand-ink);
+}
+
+.admin-subtitle,
+.muted,
+.info span {
+  color: var(--brand-muted);
+}
+
+.admin-btn,
+.search,
+input,
+select,
+textarea,
+.stock-editor input {
+  border-radius: 2px;
+}
+
+input,
+select,
+textarea,
+.search,
+.stock-editor input {
+  background: rgba(10, 10, 10, 0.58);
+  color: var(--brand-ink);
+  border-color: rgba(0, 212, 255, 0.24);
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.thumb {
+  border-radius: 2px;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.14);
+}
+
+.product-row {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.product-row:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 212, 255, 0.48);
+  box-shadow: 0 0 34px rgba(0, 212, 255, 0.2);
+}
+
+.empty-state,
+.notice {
+  border-radius: 2px;
+}

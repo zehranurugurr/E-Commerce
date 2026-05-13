@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap');
 
 *{
     margin:0;
@@ -992,6 +992,180 @@ footer ul li{
     }
 }
 
+@media (max-width: 575.98px) {
+    .main-content {
+        padding-top: 22px !important;
+        padding-bottom: 72px;
+    }
+
+    .section-content-p30,
+    .section-content-p35 {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+    }
+
+    .au-input-xl {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* === Luxury Electronics Theme Overrides === */
+:root {
+    --lux-bg: #0A0A0A;
+    --lux-surface: #151827;
+    --lux-surface-soft: rgba(21, 24, 39, 0.76);
+    --lux-accent: #D6B46A;
+    --lux-indigo: #1E2548;
+    --lux-slate: #8F9AAF;
+    --lux-text: #F4F1E8;
+    --lux-muted: #A6ADBC;
+    --lux-border: rgba(214, 180, 106, 0.24);
+    --lux-glow: 0 0 24px rgba(214, 180, 106, 0.24);
+    --lux-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+}
+
+html {
+    background: var(--lux-bg);
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--lux-text);
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0f1e 100%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.24;
+    background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 46px 46px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Rajdhani', 'DM Sans', sans-serif;
+    color: var(--lux-text);
+    letter-spacing: 0;
+}
+
+a {
+    color: var(--lux-accent);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+}
+
+button,
+.btn,
+a.primary-btn {
+    border-radius: 14px !important;
+    transition: all .3s ease !important;
+}
+
+.btn-primary,
+.btn-info,
+.au-btn-submit,
+a.primary-btn {
+    background: linear-gradient(135deg, #D6B46A, #A7833F) !important;
+    border: 1px solid rgba(214, 180, 106, 0.65) !important;
+    color: #090A0E !important;
+    font-weight: 800 !important;
+    box-shadow: 0 0 0 1px rgba(214, 180, 106, 0.16), var(--lux-glow) !important;
+}
+
+.btn-primary:hover,
+.btn-info:hover,
+.au-btn-submit:hover,
+a.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(214, 180, 106, 0.35), 0 0 34px rgba(214, 180, 106, 0.36) !important;
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--lux-border) !important;
+    color: var(--lux-accent) !important;
+    background: rgba(10, 10, 10, 0.28) !important;
+}
+
+.btn-outline-primary:hover {
+    background: rgba(214, 180, 106, 0.12) !important;
+    box-shadow: var(--lux-glow);
+}
+
+.page-wrapper,
+.page-container,
+.main-content {
+    background: transparent !important;
+}
+
+.main-content {
+    min-height: 100vh;
+    padding-top: 96px;
+}
+
+.section-content-p30,
+.section-content-p35 {
+    padding-left: clamp(18px, 3vw, 48px);
+    padding-right: clamp(18px, 3vw, 48px);
+}
+
+.card,
+.form-area,
+.admin-card,
+.auth-card,
+.account-card,
+.cart-card,
+.detail-card,
+.category-card,
+.perk-card {
+    background: rgba(26, 26, 46, 0.68) !important;
+    border: 1px solid var(--lux-border) !important;
+    box-shadow: var(--lux-shadow) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+input,
+select,
+textarea,
+.form-select,
+.au-input {
+    background: rgba(10, 10, 10, 0.62) !important;
+    color: var(--lux-text) !important;
+    border: 1px solid rgba(214, 180, 106, 0.24) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.au-input:focus {
+    border-color: var(--lux-accent) !important;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.18), var(--lux-glow) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(245, 247, 251, 0.48) !important;
+}
+
+.table {
+    color: var(--lux-text);
+}
+
+.text-muted {
+    color: var(--lux-muted) !important;
+}
+
 /* === Modern UI Overrides === */
 .page-container,
 .main-content {
@@ -1003,7 +1177,7 @@ footer ul li{
 }
 
 body {
-    background: url("/assets/images/tech-bg.jpg") center/cover fixed;
+    background: linear-gradient(135deg, #0a0a0a 0%, #0d1117 50%, #0a0f1e 100%);
 }
 
 /* === Responsive Safety Overrides === */

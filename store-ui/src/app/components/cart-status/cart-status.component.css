@@ -51,28 +51,45 @@
   opacity: 1;
 }
 
-@media (max-width: 575.98px) {
-  .cart-status {
-    width: 100%;
-  }
+/* Luxury cart status */
+:host {
+  --brand-primary: #00D4FF;
+  --brand-accent: #00D4FF;
+  --brand-ink: #F5F7FB;
+}
 
-  .cart-status-link {
-    width: 100%;
-    justify-content: center;
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: #fff;
-    border: 1px solid rgba(32, 91, 141, 0.18);
-  }
+.cart-status-link {
+  padding: 9px 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 212, 255, 0.24);
+  background: rgba(26, 26, 46, 0.64);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
 
-  .cart-total {
-    position: static;
-    opacity: 1;
-    pointer-events: auto;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    margin-left: 4px;
-    background: transparent;
-  }
+.cart-status-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 0 26px rgba(0, 212, 255, 0.26);
+}
+
+.cart-icon {
+  color: var(--brand-accent);
+}
+
+.cart-badge,
+.cart-total {
+  border-radius: 2px;
+}
+
+.cart-badge {
+  background: var(--brand-accent);
+  color: #02060A;
+}
+
+.cart-total {
+  background: rgba(10, 10, 10, 0.92);
+  color: var(--brand-ink);
+  border-color: rgba(0, 212, 255, 0.24);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.42);
+  transition: opacity .3s ease;
 }

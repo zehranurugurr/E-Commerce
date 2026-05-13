@@ -358,3 +358,87 @@
   border-radius: 999px;
   background: currentColor;
 }
+
+/* Luxury product grid */
+:host {
+  --card-bg: rgba(26, 26, 46, 0.72);
+  --card-border: rgba(0, 212, 255, 0.22);
+  --shadow-soft: 0 22px 58px rgba(0, 0, 0, 0.34);
+  --shadow-strong: 0 0 38px rgba(0, 212, 255, 0.24), 0 28px 76px rgba(0, 0, 0, 0.46);
+  --accent: #00D4FF;
+  --accent-dark: #00D4FF;
+  --price-bg: rgba(0, 212, 255, 0.12);
+  --ink: #F5F7FB;
+  --muted: #9AA4B2;
+}
+
+.product-card {
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(26, 26, 46, 0.78), rgba(10, 10, 10, 0.72));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+.product-card .ratio {
+  background:
+    radial-gradient(circle at center, rgba(0, 212, 255, 0.12), transparent 58%),
+    rgba(10, 10, 10, 0.42);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.14);
+}
+
+.product-title,
+.card-title.text-dark {
+  color: var(--ink) !important;
+  font-family: 'Rajdhani', 'DM Sans', sans-serif;
+  font-size: 1.08rem;
+}
+
+.stock-chip {
+  border-radius: 2px;
+  color: #8DFFEA;
+  background: rgba(20, 184, 166, 0.12);
+  border-color: rgba(20, 184, 166, 0.32);
+}
+
+.stock-chip.out {
+  color: #FF9E9E;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.price-tag {
+  border-radius: 2px;
+  color: var(--accent);
+  border-color: rgba(0, 212, 255, 0.28);
+}
+
+.action-group .btn-outline-primary,
+.add-to-cart {
+  border-radius: 2px;
+}
+
+.product-card .badge-pill,
+.product-card .badge-pill.badge-hot {
+  border-radius: 2px !important;
+  background: rgba(0, 212, 255, 0.14) !important;
+  border-color: rgba(0, 212, 255, 0.32) !important;
+  color: #00D4FF !important;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.22) !important;
+}
+
+.empty-state {
+  border-radius: 2px;
+  background: rgba(26, 26, 46, 0.72);
+  color: var(--ink);
+  border-color: rgba(0, 212, 255, 0.24);
+}
+
+.footer-pagination .pagination,
+.footer-pagination .page-link {
+  border-radius: 2px;
+}

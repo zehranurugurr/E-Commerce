@@ -257,3 +257,50 @@
     letter-spacing: 0.08em;
   }
 }
+
+/* Luxury category menu */
+:host{
+  --brand-primary:#00D4FF;
+  --brand-accent:#00D4FF;
+  --ink:#F5F7FB;
+  --muted:#9AA4B2;
+  --bg:#0A0A0A;
+  --card: rgba(26,26,46,.68);
+  --border: rgba(0,212,255,.20);
+  --shadow-1: 0 16px 40px rgba(0,0,0,.30);
+  --shadow-2: 0 0 30px rgba(0,212,255,.24), 0 22px 60px rgba(0,0,0,.42);
+  --r:2px;
+  --r2:2px;
+}
+
+.category-menu .navbar-sidebar .navbar-list .category-link{
+  text-transform: uppercase;
+  font-family: 'Rajdhani', 'DM Sans', sans-serif;
+  letter-spacing: 0;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease, border-color .3s ease, color .3s ease;
+}
+
+.category-menu .navbar-sidebar .navbar-list .category-link:hover{
+  background: rgba(0,212,255,.12);
+  border-color: rgba(0,212,255,.44);
+  color: var(--brand-accent);
+  box-shadow: var(--shadow-2);
+}
+
+.category-menu .navbar-sidebar .navbar-list .category-link.active-link{
+  background: linear-gradient(135deg, rgba(0,212,255,.22), rgba(26,26,46,.84));
+  border-color: rgba(0,212,255,.48);
+  color:#F5F7FB;
+  box-shadow: var(--shadow-2);
+}
+
+.category-menu .cat-icon{
+  border-radius: 2px;
+  background: rgba(0,212,255,.10);
+  border-color: rgba(0,212,255,.22);
+}
+
+.category-menu .cat-icon::before{
+  background: var(--brand-accent);
+  box-shadow: 0 0 14px rgba(0,212,255,.55);
+}

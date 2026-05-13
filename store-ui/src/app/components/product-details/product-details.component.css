@@ -290,3 +290,79 @@
     grid-auto-columns: minmax(150px, 82vw);
   }
 }
+
+/* Luxury detail */
+:host {
+  --brand-primary: #00D4FF;
+  --brand-accent: #00D4FF;
+  --brand-ink: #F5F7FB;
+  --brand-muted: #9AA4B2;
+  --brand-surface: rgba(26, 26, 46, 0.72);
+  --brand-tint: rgba(0, 212, 255, 0.12);
+  --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.38);
+  --shadow-strong: 0 0 42px rgba(0, 212, 255, 0.25), 0 28px 80px rgba(0, 0, 0, 0.48);
+}
+
+.detail-card,
+.similar-card {
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(26, 26, 46, 0.76), rgba(10, 10, 10, 0.72));
+  border-color: rgba(0, 212, 255, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.detail-media,
+.similar-media {
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at center, rgba(0, 212, 255, 0.16), transparent 60%),
+    rgba(10, 10, 10, 0.52);
+  border: 1px solid rgba(0, 212, 255, 0.16);
+}
+
+.detail-img {
+  filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.46));
+}
+
+.detail-title,
+.detail-subtitle,
+.similar-title {
+  color: var(--brand-ink);
+  text-transform: uppercase;
+}
+
+.detail-text,
+.similar-name {
+  color: var(--brand-muted);
+}
+
+.price-tag,
+.similar-price,
+.detail-stock {
+  border-radius: 2px;
+  color: var(--brand-accent);
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.28);
+}
+
+.detail-stock.out {
+  color: #FF9E9E;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.32);
+}
+
+.add-to-cart,
+.detail-back {
+  border-radius: 2px;
+}
+
+.detail-back {
+  background: rgba(10, 10, 10, 0.35);
+  border-color: rgba(0, 212, 255, 0.3);
+  color: var(--brand-accent);
+}
+
+.similar-card:hover {
+  box-shadow: var(--shadow-strong);
+}
